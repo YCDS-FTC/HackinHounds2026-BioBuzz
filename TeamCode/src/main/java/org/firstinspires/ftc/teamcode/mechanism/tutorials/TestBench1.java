@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.mechanisms.tutorials;
+package org.firstinspires.ftc.teamcode.mechanism.tutorials;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.HardwareMap;

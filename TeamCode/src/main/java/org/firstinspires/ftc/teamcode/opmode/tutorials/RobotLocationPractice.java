@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.opmodes.tutorials;
+package org.firstinspires.ftc.teamcode.opmode.tutorials;
 
 public class RobotLocationPractice {
 

@@ -1,9 +1,9 @@
-package org.firstinspires.ftc.teamcode.opmodes.tutorials;
+package org.firstinspires.ftc.teamcode.opmode.tutorials;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.mechanisms.tutorials.TestBenchServo;
+import org.firstinspires.ftc.teamcode.mechanism.tutorials.TestBenchServo;
 
 @TeleOp
 public class ServoExamples extends OpMode {

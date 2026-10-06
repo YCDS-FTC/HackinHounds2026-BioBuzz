@@ -1,9 +1,9 @@
-package org.firstinspires.ftc.teamcode.opmodes.tutorials;
+package org.firstinspires.ftc.teamcode.opmode.tutorials;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.mechanisms.tutorials.TestBench;
+import org.firstinspires.ftc.teamcode.mechanism.tutorials.TestBench;
 @TeleOp
 public class TouchSensorPractice extends OpMode {
     TestBench bench = new TestBench();
