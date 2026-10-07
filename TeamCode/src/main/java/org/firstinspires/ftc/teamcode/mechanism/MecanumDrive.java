@@ -17,8 +17,8 @@ public class MecanumDrive {
         frontLeftMotor  = hwMap.get(DcMotor.class, "front_left_motor");  // port 2
         backLeftMotor   = hwMap.get(DcMotor.class, "back_left_motor");   // port 3
 
-        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+        frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
+        backRightMotor.setDirection(DcMotor.Direction.REVERSE);
 
         frontRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -34,7 +34,7 @@ public class MecanumDrive {
         // If the directions are set incorrectly, the robot cannot properly use the IMU
         RevHubOrientationOnRobot RevOrientation = new RevHubOrientationOnRobot(
                 RevHubOrientationOnRobot.LogoFacingDirection.UP,
-                RevHubOrientationOnRobot.UsbFacingDirection.FORWARD);
+                RevHubOrientationOnRobot.UsbFacingDirection.RIGHT);
 
         imu.initialize(new IMU.Parameters(RevOrientation));
     }
@@ -72,8 +72,7 @@ public class MecanumDrive {
         this.drive(newForward, newStrafe, rotate);
     }
 
-    // jmoscola - add another method driveRobotRelative that can be called from
-    // a new TeleOp MecanumRobotOrientedOpMode.
-    // driveRobotRelative can simply call this.drive and forward the forward, strafe, and rotate values
-
+    public void driveRobotRelative(double forward, double strafe, double rotate) {
+        drive(forward, strafe, rotate);
+    }
 }
