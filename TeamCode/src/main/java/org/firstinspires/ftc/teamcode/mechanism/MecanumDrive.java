@@ -12,10 +12,10 @@ public class MecanumDrive {
     private IMU imu;
 
     public void init(HardwareMap hwMap) {
-        frontRightMotor = hwMap.get(DcMotor.class, "front_right_motor"); // port 0
-        backRightMotor  = hwMap.get(DcMotor.class, "back_right_motor");  // port 1
-        frontLeftMotor  = hwMap.get(DcMotor.class, "front_left_motor");  // port 2
-        backLeftMotor   = hwMap.get(DcMotor.class, "back_left_motor");   // port 3
+        frontRightMotor = hwMap.get(DcMotor.class, "front_right_motor"); // port 1
+        backRightMotor  = hwMap.get(DcMotor.class, "back_right_motor");  // port 0
+        frontLeftMotor  = hwMap.get(DcMotor.class, "front_left_motor");  // port 3
+        backLeftMotor   = hwMap.get(DcMotor.class, "back_left_motor");   // port 2
 
         frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
         backRightMotor.setDirection(DcMotor.Direction.REVERSE);
@@ -40,10 +40,10 @@ public class MecanumDrive {
     }
 
     public void drive(double forward, double strafe, double rotate) {
-        double frontRightPower = forward - strafe - rotate;
-        double backRightPower = forward + strafe - rotate;
-        double frontLeftPower = forward + strafe + rotate;
-        double backLeftPower = forward - strafe + rotate;
+        double frontRightPower = forward + strafe + rotate;
+        double backRightPower = forward - strafe + rotate;
+        double frontLeftPower = forward - strafe - rotate;
+        double backLeftPower = forward + strafe - rotate;
 
         double maxPower = 1.0;
         double maxSpeed = 0.3; // change if going to an outreach event
