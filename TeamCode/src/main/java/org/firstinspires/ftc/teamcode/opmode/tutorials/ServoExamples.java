@@ -1,11 +1,13 @@
 package org.firstinspires.ftc.teamcode.opmode.tutorials;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.mechanism.tutorials.TestBenchServo;
 
 @TeleOp
+@Disabled
 public class ServoExamples extends OpMode {
     TestBenchServo bench = new TestBenchServo();
     double leftTrigger, rightTrigger;

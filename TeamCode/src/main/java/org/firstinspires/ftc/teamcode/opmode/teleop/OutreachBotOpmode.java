@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.mechanism.MecanumDrive;
+import org.firstinspires.ftc.teamcode.mechanism.OutreachArm;
 import org.firstinspires.ftc.teamcode.mechanism.OutreachClaw;
 
 @TeleOp
@@ -11,14 +12,16 @@ public class OutreachBotOpmode extends OpMode {
 
     MecanumDrive drive = new MecanumDrive();
     OutreachClaw claw = new OutreachClaw();
+    OutreachArm arm = new OutreachArm();
     double forward, strafe, rotate;
     double leftTrigger, rightTrigger;
-    boolean  leftBumper, rightBumper;
+    boolean rightBumper;
 
     @Override
     public void init() {
         drive.init(hardwareMap);
         claw.init(hardwareMap);
+        arm.init(hardwareMap);
         leftTrigger = rightTrigger = 0.0;
     }
 
@@ -29,10 +32,11 @@ public class OutreachBotOpmode extends OpMode {
         rotate = gamepad1.right_stick_x;
         leftTrigger = gamepad1.left_trigger;
         rightTrigger = gamepad1.right_trigger;
+        rightBumper = gamepad1.right_bumper;
 
         drive.driveRobotRelative(forward, strafe, rotate);
 
-       // claw.setServoPosArm(leftTrigger);
-        claw.setServoPosClaw(rightTrigger);
+       arm.setMotorSpeed(rightTrigger);
+        claw.setServoPosClaw(rightBumper);
     }
 }

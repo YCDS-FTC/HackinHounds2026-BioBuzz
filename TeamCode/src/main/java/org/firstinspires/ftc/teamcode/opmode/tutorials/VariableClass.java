@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode.opmode.tutorials;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp
+@Disabled
 public class VariableClass extends OpMode {
 
     @Override
