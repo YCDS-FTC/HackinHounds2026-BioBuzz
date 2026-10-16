@@ -36,7 +36,15 @@ public class OutreachBotOpmode extends OpMode {
 
         drive.driveRobotRelative(forward, strafe, rotate);
 
-       arm.setMotorSpeed(rightTrigger);
+        if(rightTrigger > 0.1) {
+            arm.armExtend();
+        }
+        else if (leftTrigger > 0.1) {
+            arm.armRetract();
+        }
+        else{
+            arm.armStop();
+        }
         claw.setServoPosClaw(rightBumper);
     }
 }
