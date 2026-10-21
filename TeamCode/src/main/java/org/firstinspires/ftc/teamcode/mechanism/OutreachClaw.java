@@ -12,16 +12,16 @@ public class OutreachClaw {
     public static double MIN_ANGLE = 0.735;
     public static double MAX_ANGLE = 0.78;
 
-    public void init(HardwareMap hwMap){
+    public void init(HardwareMap hwMap) {
         servoClaw = hwMap.get(Servo.class, "servo_claw");
         servoClaw.setDirection(Servo.Direction.REVERSE);
     }
 
-    public void setServoPosClaw(boolean isButtonPressed){
-        if(isButtonPressed){
+    public void setServoPosClaw(boolean isButtonPressed) {
+        if(isButtonPressed) {
             servoClaw.setPosition(MAX_ANGLE);
         }
-        else{
+        else {
             servoClaw.setPosition(MIN_ANGLE);
         }
     }

@@ -42,10 +42,10 @@ public class OutreachBotOpmode extends OpMode {
         else if (leftTrigger > 0.1) {
             arm.armRetract();
         }
-        else{
+        else {
             arm.armStop();
         }
-        telemetry.addData("bumper", rightBumper);
+        telemetry.addData("arm motor current", arm.getMotorCurrent());
         claw.setServoPosClaw(!rightBumper);
     }
 }
