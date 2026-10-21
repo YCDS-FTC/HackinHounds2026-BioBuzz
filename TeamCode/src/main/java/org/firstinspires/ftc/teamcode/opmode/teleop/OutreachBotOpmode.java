@@ -45,6 +45,7 @@ public class OutreachBotOpmode extends OpMode {
         else{
             arm.armStop();
         }
-        claw.setServoPosClaw(rightBumper);
+        telemetry.addData("bumper", rightBumper);
+        claw.setServoPosClaw(!rightBumper);
     }
 }

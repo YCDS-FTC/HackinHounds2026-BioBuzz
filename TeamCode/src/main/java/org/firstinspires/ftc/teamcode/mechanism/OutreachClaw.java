@@ -1,25 +1,28 @@
 package org.firstinspires.ftc.teamcode.mechanism;
 
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.acmerobotics.dashboard.config.Config;
 
+@Config
 public class OutreachClaw {
 
     private Servo servoClaw;
-    private static final double MAX_ANGLE = 0.333333333333333;//1.0/30.0 of 5 turns
+
+    public static double MIN_ANGLE = 0.735;
+    public static double MAX_ANGLE = 0.78;
 
     public void init(HardwareMap hwMap){
         servoClaw = hwMap.get(Servo.class, "servo_claw");
-        servoClaw.scaleRange(0, MAX_ANGLE);//change when figure out what is bad or not
+        servoClaw.setDirection(Servo.Direction.REVERSE);
     }
 
     public void setServoPosClaw(boolean isButtonPressed){
         if(isButtonPressed){
-            servoClaw.setPosition(1.0);
+            servoClaw.setPosition(MAX_ANGLE);
         }
         else{
-            servoClaw.setPosition(0.0);
+            servoClaw.setPosition(MIN_ANGLE);
         }
     }
 }
