@@ -36,6 +36,8 @@ public class OutreachBotOpmode extends OpMode {
 
         drive.driveRobotRelative(forward, strafe, rotate);
 
+        // refactor this into the OutReachArm code (make updatePosition method in Arm
+        // that takes rightTrigger and leftTrigger as parameters named extendArm and retractArm)
         if(rightTrigger > 0.1) {
             arm.armExtend();
         }
@@ -45,7 +47,10 @@ public class OutreachBotOpmode extends OpMode {
         else {
             arm.armStop();
         }
+
+        claw.updatePosition(rightBumper);
+
+        // put all telemetry outputs here
         telemetry.addData("arm motor current", arm.getMotorCurrent());
-        claw.setServoPosClaw(!rightBumper);
     }
 }

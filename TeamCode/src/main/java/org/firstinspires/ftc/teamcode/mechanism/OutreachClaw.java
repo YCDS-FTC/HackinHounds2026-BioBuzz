@@ -9,20 +9,29 @@ public class OutreachClaw {
 
     private Servo servoClaw;
 
-    public static double MIN_ANGLE = 0.735;
+    public static double MIN_ANGLE = 0.735;  // public so they are accessible via FTC Dashboard
     public static double MAX_ANGLE = 0.78;
 
     public void init(HardwareMap hwMap) {
         servoClaw = hwMap.get(Servo.class, "servo_claw");
         servoClaw.setDirection(Servo.Direction.REVERSE);
+        openClaw();
     }
 
-    public void setServoPosClaw(boolean isButtonPressed) {
+    public void closeClaw() {
+        servoClaw.setPosition(MIN_ANGLE);
+    }
+
+    public void openClaw() {
+        servoClaw.setPosition(MAX_ANGLE);
+    }
+
+    public void updatePosition(boolean isButtonPressed) {
         if(isButtonPressed) {
-            servoClaw.setPosition(MAX_ANGLE);
+            closeClaw();
         }
         else {
-            servoClaw.setPosition(MIN_ANGLE);
+            openClaw();
         }
     }
 }
