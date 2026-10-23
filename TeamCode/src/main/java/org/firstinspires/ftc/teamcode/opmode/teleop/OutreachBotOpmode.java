@@ -35,22 +35,13 @@ public class OutreachBotOpmode extends OpMode {
         rightBumper = gamepad1.right_bumper;
 
         drive.driveRobotRelative(forward, strafe, rotate);
-
-        // refactor this into the OutReachArm code (make updatePosition method in Arm
-        // that takes rightTrigger and leftTrigger as parameters named extendArm and retractArm)
-        if(rightTrigger > 0.1) {
-            arm.armExtend();
-        }
-        else if (leftTrigger > 0.1) {
-            arm.armRetract();
-        }
-        else {
-            arm.armStop();
-        }
-
+        arm.updateArmPosition(leftTrigger, rightTrigger);
         claw.updatePosition(rightBumper);
 
         // put all telemetry outputs here
         telemetry.addData("arm motor current", arm.getMotorCurrent());
+        telemetry.addData("arm over extend count", arm.getOverExtendedCount());
+        telemetry.addData("are over retracted count", arm.getOverRetractedCount());
+
     }
 }
