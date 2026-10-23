@@ -25,23 +25,23 @@ public class OutreachArm {
         motorArm.setPower(power);
     }
 
-    public void armExtend() {
+    public void armExtend(double extensionSpeed) {
         if (motorArm.isOverCurrent() || (overExtendedCount > MAX_OVERCURRENT_COUNT)) {
             overExtendedCount++;
             setMotorPower(0.0);
         } else {
             overRetractedCount = 0;
-            setMotorPower(1.0);
+            setMotorPower(extensionSpeed);
         }
     }
 
-    public void armRetract() {
+    public void armRetract(double retractionSpeed) {
         if (motorArm.isOverCurrent() || (overRetractedCount > MAX_OVERCURRENT_COUNT)) {
             overRetractedCount++;
             setMotorPower(0.0);
         } else {
             overExtendedCount = 0;
-            setMotorPower(-1.0);
+            setMotorPower(-retractionSpeed);
         }
     }
 
@@ -51,10 +51,10 @@ public class OutreachArm {
 
     public void updateArmPosition(double retractionSpeed, double extensionSpeed) {
         if(extensionSpeed > 0.1) {
-            armExtend();
+            armExtend(extensionSpeed);
         }
         else if (retractionSpeed > 0.1) {
-            armRetract();
+            armRetract(retractionSpeed);
         }
         else {
             armStop();
