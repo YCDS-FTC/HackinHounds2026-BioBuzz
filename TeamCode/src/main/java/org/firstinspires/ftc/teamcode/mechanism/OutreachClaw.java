@@ -19,11 +19,11 @@ public class OutreachClaw {
     }
 
     public void closeClaw() {
-        servoClaw.setPosition(MAX_ANGLE);
+        servoClaw.setPosition(MIN_ANGLE);
     }
 
     public void openClaw() {
-        servoClaw.setPosition(MIN_ANGLE);
+        servoClaw.setPosition(MAX_ANGLE);
     }
 
     public void updatePosition(boolean isButtonPressed) {
