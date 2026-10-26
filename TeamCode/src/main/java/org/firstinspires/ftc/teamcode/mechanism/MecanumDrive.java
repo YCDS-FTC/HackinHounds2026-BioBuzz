@@ -27,11 +27,6 @@ public class MecanumDrive {
 
         imu = hwMap.get(IMU.class, "imu");
 
-        // jmoscola - the RevHubOrientationOnRobot is dependent on the physical
-        // orientation of the Rev Control Hub on the robot.  Look at the physical
-        // robot and update the "UsbFacingDirection".
-        //
-        // If the directions are set incorrectly, the robot cannot properly use the IMU
         RevHubOrientationOnRobot RevOrientation = new RevHubOrientationOnRobot(
                 RevHubOrientationOnRobot.LogoFacingDirection.UP,
                 RevHubOrientationOnRobot.UsbFacingDirection.RIGHT);

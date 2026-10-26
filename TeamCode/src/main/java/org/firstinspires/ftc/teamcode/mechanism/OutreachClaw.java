@@ -28,10 +28,10 @@ public class OutreachClaw {
 
     public void updatePosition(boolean isButtonPressed) {
         if(isButtonPressed) {
-            closeClaw();
+            openClaw();
         }
         else {
-            openClaw();
+            closeClaw();
         }
     }
 }
