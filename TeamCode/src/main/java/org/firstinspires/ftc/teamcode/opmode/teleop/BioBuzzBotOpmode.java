@@ -10,14 +10,14 @@ import org.firstinspires.ftc.teamcode.mechanism.Turret;
 public class BioBuzzBotOpmode extends OpMode {
 
     MecanumDrive drive = new MecanumDrive();
-    Turret turret = new Turret();
+    // Turret turret = new Turret();
     double forward, strafe, rotate;
     boolean outtakeOn, outtakeOff;
 
     @Override
     public void init() {
         drive.init(hardwareMap);
-        turret.init(hardwareMap);
+        // turret.init(hardwareMap);
         outtakeOn = outtakeOff = false;
     }
 
@@ -30,6 +30,6 @@ public class BioBuzzBotOpmode extends OpMode {
         outtakeOff = gamepad1.left_bumper;
 
         drive.driveRobotRelative(forward, strafe, rotate);
-        turret.updateOuttakeState(outtakeOn, outtakeOff);
+        // turret.updateOuttakeState(outtakeOn, outtakeOff);
     }
 }
