@@ -5,13 +5,19 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.mechanism.MecanumDrive;
 import org.firstinspires.ftc.teamcode.mechanism.Turret;
+import org.firstinspires.ftc.teamcode.mechanism.Transfer;
 
 @TeleOp
 public class BioBuzzBotOpmode extends OpMode {
 
     MecanumDrive drive = new MecanumDrive();
-    // Turret turret = new Turret();
+    Transfer transfer = new Transfer();
+    Turret turret = new Turret();
+
     double forward, strafe, rotate;
+
+    boolean intakeIn, intakeOut;
+    boolean transferIn, transferOut;
     boolean outtakeOn, outtakeOff;
 
     @Override
@@ -28,8 +34,15 @@ public class BioBuzzBotOpmode extends OpMode {
         rotate = gamepad1.right_stick_x;
         outtakeOn = gamepad1.right_bumper;
         outtakeOff = gamepad1.left_bumper;
+        intakeIn = gamepad1.x;
+        intakeOut = gamepad1.a;
+        transferIn = gamepad1.y;
+        transferOut = gamepad1.b;
 
         drive.driveRobotRelative(forward, strafe, rotate);
+        transfer.updateTransferState(transferIn, transferOut);
         // turret.updateOuttakeState(outtakeOn, outtakeOff);
+
+
     }
 }

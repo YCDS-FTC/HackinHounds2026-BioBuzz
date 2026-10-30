@@ -41,7 +41,7 @@ public class MecanumDrive {
         double backLeftPower = forward + strafe - rotate;
 
         double maxPower = 1.0;
-        double maxSpeed = 0.3; // change if going to an outreach event
+        double maxSpeed = 1.0; // change if going to an outreach event
 
         maxPower = Math.max(maxPower, Math.abs(frontRightPower));
         maxPower = Math.max(maxPower, Math.abs(backRightPower));

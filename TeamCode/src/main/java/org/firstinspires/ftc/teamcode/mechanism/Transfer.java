@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.mechanism;
 
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
 public class Transfer {
 
     private DcMotorEx motorTransfer;
@@ -12,8 +13,28 @@ public class Transfer {
         motorTransfer.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
     }
 
-    private void setMotorPower(double power) {
-        motorTransfer.setPower(power);
+
+    public void updateTransferState(boolean transferIn, boolean transferOut) {
+
+        if (transferIn) {
+
+            enableTransferIn();
+        }
+
+        if (transferOut) {
+
+            enableTransferOut();
+        }
+
     }
 
+    public void enableTransferIn() {
+
+        motorTransfer.setPower(1);
+    }
+
+    public void enableTransferOut() {
+
+        motorTransfer.setPower(-1);
+    }
 }
