@@ -23,6 +23,8 @@ public class BioBuzzBotOpmode extends OpMode {
     @Override
     public void init() {
         drive.init(hardwareMap);
+        transfer.init((hardwareMap));
+        transferIn = transferOut = false;
         // turret.init(hardwareMap);
         outtakeOn = outtakeOff = false;
     }

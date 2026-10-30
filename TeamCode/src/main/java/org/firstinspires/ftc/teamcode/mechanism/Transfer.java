@@ -15,26 +15,26 @@ public class Transfer {
 
 
     public void updateTransferState(boolean transferIn, boolean transferOut) {
-
         if (transferIn) {
-
             enableTransferIn();
         }
-
-        if (transferOut) {
-
+        else if (transferOut) {
             enableTransferOut();
         }
-
+        else {
+            stopTransfer();
+        }
     }
 
     public void enableTransferIn() {
-
-        motorTransfer.setPower(1);
+        motorTransfer.setPower(1.0);
     }
 
     public void enableTransferOut() {
+        motorTransfer.setPower(-1.0);
+    }
 
-        motorTransfer.setPower(-1);
+    public void stopTransfer() {
+        motorTransfer.setPower(0.0);
     }
 }
