@@ -47,7 +47,5 @@ public class BioBuzzBotOpmode extends OpMode {
         intake.updateIntakeState(intakeIn, intakeOut);
         transfer.updateTransferState(transferIn, transferOut);
         // turret.updateOuttakeState(outtakeOn, outtakeOff);
-
-
     }
 }
