@@ -7,7 +7,6 @@ import org.firstinspires.ftc.teamcode.mechanism.Intake;
 import org.firstinspires.ftc.teamcode.mechanism.MecanumDrive;
 import org.firstinspires.ftc.teamcode.mechanism.Turret;
 import org.firstinspires.ftc.teamcode.mechanism.Transfer;
-import org.firstinspires.ftc.teamcode.mechanism.Intake;
 
 @TeleOp
 public class BioBuzzBotOpmode extends OpMode {
