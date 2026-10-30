@@ -13,7 +13,23 @@ public class Intake {
         motorIntake.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
     }
 
-    private void setMotorPower(double power) {
-        motorIntake.setPower(power);
+    public void enableIntakeIn() {
+        motorIntake.setPower(1.0);
     }
+
+    public void disableIntakeOut() {
+        motorIntake.setPower(-1.0);
+    }
+
+    public void updateIntakeState(boolean intakeIn, boolean intakeOut) {
+        if (intakeIn) {
+            enableIntakeIn();
+        }
+        else if(intakeOut) {
+            disableIntakeOut();
+        }
+    }
+
 }
+
+
