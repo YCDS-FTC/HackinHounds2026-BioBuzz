@@ -27,7 +27,7 @@ public class BioBuzzBotOpmode extends OpMode {
         drive.init(hardwareMap);
         transfer.init((hardwareMap));
         transferIn = transferOut = false;
-        // turret.init(hardwareMap);
+        turret.init(hardwareMap);
         outtakeOn = outtakeOff = false;
     }
 
@@ -46,6 +46,6 @@ public class BioBuzzBotOpmode extends OpMode {
         drive.driveRobotRelative(forward, strafe, rotate);
         intake.updateIntakeState(intakeIn, intakeOut);
         transfer.updateTransferState(transferIn, transferOut);
-        // turret.updateOuttakeState(outtakeOn, outtakeOff);
+        turret.updateOuttakeState(outtakeOn, outtakeOff);
     }
 }
