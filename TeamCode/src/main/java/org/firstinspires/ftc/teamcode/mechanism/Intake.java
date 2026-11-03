@@ -8,25 +8,33 @@ public class Intake {
     private DcMotorEx motorIntake;
 
     public void init(HardwareMap hwMap) {
-        motorIntake = hwMap.get(DcMotorEx.class, "motor_arm");
+        motorIntake = hwMap.get(DcMotorEx.class, "motor_intake");
         motorIntake.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
         motorIntake.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
     }
 
-    public void enableIntakeIn() {
+    public void enableIntakeIngest() {
         motorIntake.setPower(1.0);
     }
 
-    public void disableIntakeOut() {
+    public void disableIntake() {
+        motorIntake.setPower(0.0);
+    }
+
+    public void enableIntakeEgest() {
         motorIntake.setPower(-1.0);
     }
 
+
     public void updateIntakeState(boolean intakeIn, boolean intakeOut) {
         if (intakeIn) {
-            enableIntakeIn();
+            enableIntakeIngest();
         }
         else if(intakeOut) {
-            disableIntakeOut();
+            enableIntakeEgest();
+        }
+        else{
+            disableIntake();
         }
     }
 
