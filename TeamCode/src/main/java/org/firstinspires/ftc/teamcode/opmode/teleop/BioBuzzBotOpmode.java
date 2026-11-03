@@ -13,7 +13,7 @@ public class BioBuzzBotOpmode extends OpMode {
 
     MecanumDrive drive = new MecanumDrive();
     Intake intake = new Intake();
-//    Transfer transfer = new Transfer();
+    Transfer transfer = new Transfer();
 //    Turret turret = new Turret();
 
     double forward, strafe, rotate;
@@ -27,8 +27,8 @@ public class BioBuzzBotOpmode extends OpMode {
         drive.init(hardwareMap);
         intake.init(hardwareMap);
         intakeIn = intakeOut = false;
-//        transfer.init((hardwareMap));
-//        transferIn = transferOut = false;
+        transfer.init(hardwareMap);
+        transferIn = transferOut = false;
 //        turret.init(hardwareMap);
 //        outtakeOn = outtakeOff = false;
     }
@@ -47,7 +47,7 @@ public class BioBuzzBotOpmode extends OpMode {
 
         drive.driveRobotRelative(forward, strafe, rotate);
         intake.updateIntakeState(intakeIn, intakeOut);
-//        transfer.updateTransferState(transferIn, transferOut);
+        transfer.updateTransferState(transferIn, transferOut);
 //        turret.updateOuttakeState(outtakeOn, outtakeOff);
     }
 }
