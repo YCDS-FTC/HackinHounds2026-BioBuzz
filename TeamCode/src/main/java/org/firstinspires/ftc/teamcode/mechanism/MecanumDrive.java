@@ -17,8 +17,8 @@ public class MecanumDrive {
         frontLeftMotor  = hwMap.get(DcMotor.class, "front_left_motor");  // port 0 expansion
         backLeftMotor   = hwMap.get(DcMotor.class, "back_left_motor");   // port 2 expansion
 
-        frontRightMotor.setDirection(DcMotor.Direction.REVERSE);
-        backRightMotor.setDirection(DcMotor.Direction.REVERSE);
+        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+        backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
 
         frontRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -35,10 +35,10 @@ public class MecanumDrive {
     }
 
     private void drive(double forward, double strafe, double rotate) {
-        double frontRightPower = forward + strafe + rotate;
-        double backRightPower = forward - strafe + rotate;
-        double frontLeftPower = forward - strafe - rotate;
-        double backLeftPower = forward + strafe - rotate;
+        double frontRightPower = forward - strafe - rotate;
+        double backRightPower = forward + strafe - rotate;
+        double frontLeftPower = forward + strafe + rotate;
+        double backLeftPower = forward - strafe + rotate;
 
         double maxPower = 1.0;
         double maxSpeed = 1.0; // change if going to an outreach event
