@@ -31,13 +31,16 @@ public class Intake {
         motorIntake.setPower(0.0);
     }
 
-    public void updateIntakeState(boolean intakeIn, boolean intakeOut) {
+    public void updateIntakeState(boolean intakeIn, boolean intakeOut, boolean intakeStop) {
 
         if(intakeIn) {
             intakeDirection = 1;
         }
         else if (intakeOut) {
             intakeDirection = -1;
+        }
+        else if (intakeStop) {
+            intakeDirection = -2
         }
         else {
             intakeDirection = 0;
@@ -62,6 +65,9 @@ public class Intake {
                 disableIntake();
                 ejestCounter++;
             }
+        }
+        else if (intakeDirection == -2) {
+            disableIntake();
         }
     }
 

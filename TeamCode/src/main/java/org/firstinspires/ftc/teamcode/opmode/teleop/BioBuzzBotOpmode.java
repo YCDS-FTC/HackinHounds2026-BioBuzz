@@ -18,7 +18,7 @@ public class BioBuzzBotOpmode extends OpMode {
 
     double forward, strafe, rotate;
 
-    boolean intakeIn, intakeOut;
+    boolean intakeIn, intakeOut, intakeStop;
     boolean transferIn, transferOut;
     boolean outtakeOn, outtakeOff;
 
@@ -42,11 +42,12 @@ public class BioBuzzBotOpmode extends OpMode {
         outtakeOff = gamepad1.left_bumper;
         intakeIn = gamepad1.x;
         intakeOut = gamepad1.a;
+        intakeStop = gamepad1.dpad_down
         transferIn = gamepad1.y;
         transferOut = gamepad1.b;
 
         drive.driveRobotRelative(forward, strafe, rotate);
-        intake.updateIntakeState(intakeIn, intakeOut);
+        intake.updateIntakeState(intakeIn, intakeOut, intakeStop);
         //transfer.updateTransferState(transferIn, transferOut);
         turret.updateOuttakeState(outtakeOn, outtakeOff);
     }
