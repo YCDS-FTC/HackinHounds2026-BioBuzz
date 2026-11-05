@@ -10,6 +10,7 @@ public class MecanumDrive {
 
     private DcMotor frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor;
     private IMU imu;
+    private double headingOffset;
 
     public void init(HardwareMap hwMap) {
         frontRightMotor = hwMap.get(DcMotor.class, "front_right_motor"); // port 2
@@ -59,7 +60,7 @@ public class MecanumDrive {
         double r = Math.hypot(strafe, forward);
 
         theta = AngleUnit.normalizeRadians(theta -
-                imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS));
+                imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS) + headingOffset);
 
         double newForward = r * Math.sin(theta);
         double newStrafe = r * Math.cos(theta);
@@ -69,5 +70,13 @@ public class MecanumDrive {
 
     public void driveRobotRelative(double forward, double strafe, double rotate) {
         drive(forward, strafe, rotate);
+    }
+
+    public void resetYaw() {
+        imu.resetYaw();
+    }
+
+    public void setHeadingOffset(double radiansOffset) {
+        headingOffset = radiansOffset;
     }
 }

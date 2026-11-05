@@ -40,7 +40,7 @@ public class Intake {
             intakeDirection = -1;
         }
         else if (intakeStop) {
-            intakeDirection = -2
+            intakeDirection = -2;
         }
         else {
             intakeDirection = 0;

@@ -34,19 +34,32 @@ public class BioBuzzBotOpmode extends OpMode {
     }
 
     @Override
+    public void start() {
+        // if on BLUE and robot is starting on audience side, set to 90º
+        // if on RED and robot is starting on audience side, set to -90º
+        // otherwise set to 0
+        // for other starting positions, figure it out.
+        drive.setHeadingOffset(Math.toRadians(0));
+    }
+
+    @Override
     public void loop() {
         forward = -gamepad1.left_stick_y;
         strafe = gamepad1.left_stick_x;
         rotate = gamepad1.right_stick_x;
+
         outtakeOn = gamepad1.right_bumper;
         outtakeOff = gamepad1.left_bumper;
+
         intakeIn = gamepad1.x;
         intakeOut = gamepad1.a;
-        intakeStop = gamepad1.dpad_down
+        intakeStop = gamepad1.dpad_down;
+
         transferIn = gamepad1.y;
         transferOut = gamepad1.b;
 
-        drive.driveRobotRelative(forward, strafe, rotate);
+
+        drive.driveFieldRelative(forward, strafe, rotate);
         intake.updateIntakeState(intakeIn, intakeOut, intakeStop);
         //transfer.updateTransferState(transferIn, transferOut);
         turret.updateOuttakeState(outtakeOn, outtakeOff);
