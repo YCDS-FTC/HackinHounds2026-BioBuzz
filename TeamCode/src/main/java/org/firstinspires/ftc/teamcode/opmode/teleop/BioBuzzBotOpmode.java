@@ -17,6 +17,7 @@ public class BioBuzzBotOpmode extends OpMode {
     Turret turret = new Turret();
 
     double forward, strafe, rotate;
+    double hoodAngle, swivelAngle;
 
     boolean intakeIn, intakeOut, intakeStop;
     boolean transferIn, transferOut;
@@ -31,6 +32,7 @@ public class BioBuzzBotOpmode extends OpMode {
 //        transferIn = transferOut = false;
         turret.init(hardwareMap);
         outtakeOn = outtakeOff = false;
+        hoodAngle = swivelAngle = 0.0;
     }
 
     @Override
@@ -51,6 +53,9 @@ public class BioBuzzBotOpmode extends OpMode {
         outtakeOn = gamepad1.right_bumper;
         outtakeOff = gamepad1.left_bumper;
 
+        hoodAngle = gamepad1.right_trigger;
+        swivelAngle = gamepad1.left_trigger;
+
         intakeIn = gamepad1.x;
         intakeOut = gamepad1.a;
         intakeStop = gamepad1.dpad_down;
@@ -63,5 +68,7 @@ public class BioBuzzBotOpmode extends OpMode {
         intake.updateIntakeState(intakeIn, intakeOut, intakeStop);
         //transfer.updateTransferState(transferIn, transferOut);
         turret.updateOuttakeState(outtakeOn, outtakeOff);
+        turret.setHoodAngle(hoodAngle);
+        turret.setTurretAngle(swivelAngle);
     }
 }

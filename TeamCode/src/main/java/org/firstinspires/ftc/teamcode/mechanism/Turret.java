@@ -10,46 +10,44 @@ import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
 @Config
 public class Turret {
 
-    //private Servo servoHood, servoTurretSwivel;
+    private Servo servoHood, servoTurretSwivel;
     private DcMotorEx motorOuttake;
 
     private  double outtakeSpeed;
     //private int overCurrentCount;
 
+    enum shooterState {
+        ON,
+        OFF,
+    }
+    private shooterState currentShooterState;
+
     //private static final double MAX_CURRENT = 5.0;
     private static final int MAX_OVERCURRENT_COUNT = 5;
     public static double MAX_SWIVEL_ANGLE = 90.0;
     public static double MIN_SWIVEL_ANGLE = 0.0;
-    public static double HOME_SWIVEL_ANGLE = 0.0;
     public static double MAX_HOOD_ANGLE = 90.0;
     public static double MIN_HOOD_ANGLE = 0.0;
-    public static double HOME_HOOD_ANGLE = 0.0;
     public static double MAX_OUTTAKE_SPEED = 1.0;
 
     public void init(HardwareMap hwMap) {
-       // servoHood = hwMap.get(Servo.class, "servo_hood");
-       // servoTurretSwivel = hwMap.get(Servo.class, "servo_turret_swivel");
+        servoHood = hwMap.get(Servo.class, "servo_hood");
+        servoTurretSwivel = hwMap.get(Servo.class, "servo_turret_swivel");
         motorOuttake = hwMap.get(DcMotorEx.class, "motor_outtake");
         motorOuttake.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
         motorOuttake.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+        currentShooterState = shooterState.OFF;
         //motorOuttake.setCurrentAlert(MAX_CURRENT, CurrentUnit.AMPS);
         //overCurrentCount = 0;
     }
 
-//    private void setHoodAngle() {
-//        servoHood.setPosition();
-//    }
+    public void setHoodAngle(double hoodAngle) {
+        servoHood.setPosition(hoodAngle);
+    }
 
-//    private void setHoodHome() {
-//        servoHood.setPosition(HOME_HOOD_ANGLE);
-//    }
-
-//    private void setTurretAngle() {
-//        servoTurretSwivel.setPosition();
-//    }
-//    private void setTurretHome(){
-//        servoTurretSwivel.setPosition(HOME_SWIVEL_ANGLE);
-//    }
+    public void setTurretAngle(double swivelAngle) {
+        servoTurretSwivel.setPosition(swivelAngle);
+    }
 
     private void setOuttakeSpeed() {
 //        if (motorOuttake.isOverCurrent() || overCurrentCount > MAX_OVERCURRENT_COUNT) {
@@ -70,14 +68,30 @@ public class Turret {
     }
 
     public void updateOuttakeState(boolean outtakeOn, boolean outtakeOff) {
-        if (outtakeOff) {
-            disableOuttake();
+        switch (currentShooterState) {
+            case ON:
+                if (outtakeOff) {
+                    currentShooterState = shooterState.OFF;
+                    disableOuttake();
+                }
+                break;
+            case OFF:
+                if (outtakeOn) {
+                    currentShooterState = shooterState.ON;
+                    enableOuttake();
+                }
+                break;
         }
-        else if (outtakeOn) {
-            enableOuttake();
-        }
-        else {
-            disableOuttake();
-        }
+
+
+//        if (outtakeOff) {
+//            disableOuttake();
+//        }
+//        else if (outtakeOn) {
+//            enableOuttake();
+//        }
+//        else {
+//            disableOuttake();
+//        }
     }
 }
