@@ -13,14 +13,13 @@ public class BioBuzzBotOpmode extends OpMode {
 
     MecanumDrive drive = new MecanumDrive();
     Intake intake = new Intake();
-    //Transfer transfer = new Transfer();
+    Transfer transfer = new Transfer();
     Turret turret = new Turret();
 
     double forward, strafe, rotate;
     double hoodAngle, swivelAngle;
 
     boolean intakeIn, intakeOut, intakeStop;
-    boolean transferIn, transferOut;
     boolean outtakeOn, outtakeOff;
 
     @Override
@@ -28,8 +27,7 @@ public class BioBuzzBotOpmode extends OpMode {
         drive.init(hardwareMap);
         intake.init(hardwareMap);
         intakeIn = intakeOut = false;
-//        transfer.init(hardwareMap);
-//        transferIn = transferOut = false;
+        transfer.init(hardwareMap);
         turret.init(hardwareMap);
         outtakeOn = outtakeOff = false;
         hoodAngle = swivelAngle = 0.0;
@@ -60,13 +58,9 @@ public class BioBuzzBotOpmode extends OpMode {
         intakeOut = gamepad1.a;
         intakeStop = gamepad1.dpad_down;
 
-        transferIn = gamepad1.y;
-        transferOut = gamepad1.b;
-
-
         drive.driveFieldRelative(forward, strafe, rotate);
         intake.updateIntakeState(intakeIn, intakeOut, intakeStop);
-        //transfer.updateTransferState(transferIn, transferOut);
+        transfer.updateTransferState(intake.getState());
         turret.updateOuttakeState(outtakeOn, outtakeOff);
         turret.setHoodAngle(hoodAngle);
         turret.setTurretAngle(swivelAngle);

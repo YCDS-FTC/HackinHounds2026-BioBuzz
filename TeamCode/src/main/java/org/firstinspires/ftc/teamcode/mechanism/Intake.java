@@ -7,12 +7,7 @@ public class Intake {
 
     private DcMotorEx motorIntake;
 
-//    private int injestCounter;
-//    private int ejestCounter;
-//    private int intakeDirection;
-
-
-    enum IntakeState {
+    public enum IntakeState {
         READY,
         INGESTING,
         EGESTING,
@@ -142,44 +137,10 @@ public class Intake {
                 }
                 break;
         }
+    }
 
-//
-//        if(intakeIn) {
-//            intakeDirection = 1;
-//        }
-//        else if (intakeOut) {
-//            intakeDirection = -1;
-//        }
-//        else if (intakeStop) {
-//            intakeDirection = -2;
-//        }
-//        else {
-//            intakeDirection = 0;
-//        }
-//
-//        if (intakeDirection == 1) {
-//            ejestCounter = 0;
-//            if(injestCounter > MAX_COUNTER) {
-//                enableIntakeIngest();
-//            }
-//            else if (injestCounter <= MAX_COUNTER) {
-//                disableIntake();
-//                injestCounter++;
-//            }
-//        }
-//        else if (intakeDirection == -1) {
-//            injestCounter = 0;
-//            if (ejestCounter > MAX_COUNTER) {
-//                enableIntakeEgest();
-//            }
-//            else if (ejestCounter <= MAX_COUNTER) {
-//                disableIntake();
-//                ejestCounter++;
-//            }
-//        }
-//        else if (intakeDirection == -2) {
-//            disableIntake();
-//        }
+    public IntakeState getState () {
+        return currentState;
     }
 
 }

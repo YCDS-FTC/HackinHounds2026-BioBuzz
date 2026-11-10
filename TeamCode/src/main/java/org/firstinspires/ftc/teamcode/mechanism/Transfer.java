@@ -13,19 +13,6 @@ public class Transfer {
         motorTransfer.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
     }
 
-
-    public void updateTransferState(boolean transferIn, boolean transferOut) {
-        if (transferIn) {
-            enableTransferIn();
-        }
-        else if (transferOut) {
-            enableTransferOut();
-        }
-        else {
-            stopTransfer();
-        }
-    }
-
     public void enableTransferIn() {
         motorTransfer.setPower(1.0);
     }
@@ -34,7 +21,19 @@ public class Transfer {
         motorTransfer.setPower(-1.0);
     }
 
-    public void stopTransfer() {
+    public void disableTransfer() {
         motorTransfer.setPower(0.0);
+    }
+
+    public void updateTransferState(Intake.IntakeState intakeState) {
+        if (intakeState == Intake.IntakeState.INGESTING) {
+            enableTransferIn();
+        }
+        else if (intakeState == Intake.IntakeState.EGESTING) {
+            enableTransferOut();
+        }
+        else {
+            disableTransfer();
+        }
     }
 }
